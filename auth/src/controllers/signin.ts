@@ -8,8 +8,9 @@ const signin = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
   const findUser = await User.findOne({ email });
-
+  console.log(findUser);
   if (!!findUser) {
+    console.log(findUser.password, 'password', password);
     const valid = await PasswordManager.compare(findUser.password, password);
     if (valid) {
       // Gemerate JWT

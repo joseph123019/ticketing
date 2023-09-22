@@ -32,7 +32,7 @@ afterAll(async () => {
 });
 
 global.signin = async () => {
-  const email = 'test@test.com';
+  const email = 'email@example.com';
   const password = 'password';
 
   const response = await request(app)

@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    select: false,
   },
 });
 userSchema.statics.build = (attrs: UserAttrs) => {

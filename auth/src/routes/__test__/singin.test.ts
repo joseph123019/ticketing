@@ -16,7 +16,7 @@ it('fails when an incorrect password is supplied', async () => {
     .post('/api/users/signup')
     .send({
       email: 'email@example.com',
-      password: 'examplepassword',
+      password: 'password',
     })
     .expect(201);
 
@@ -24,7 +24,7 @@ it('fails when an incorrect password is supplied', async () => {
     .post('/api/users/signin')
     .send({
       email: 'email@example.com',
-      password: 'examplepassword1',
+      password: 'password1',
     })
     .expect(400);
 });
