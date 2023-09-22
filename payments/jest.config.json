@@ -1,0 +1,12 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "setupFilesAfterEnv": ["./src/test/setup.ts"],
+  "moduleNameMapper": {
+    "@src/(.*)": "<rootDir>/src/$1",
+    "@controllers/(.*)": "<rootDir>/src/controllers/$1",
+    "@models/(.*)": "<rootDir>/src/models/$1",
+    "@routes/(.*)": "<rootDir>/src/routes/$1",
+    "@services/(.*)": "<rootDir>/src/services/$1"
+  }
+}
