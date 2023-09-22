@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { app } from './app';
 
 const start = async () => {
+  // adding comment for testing of docker push to k8s digitalocean
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
   }
