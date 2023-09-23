@@ -8,7 +8,8 @@ export default ({ req }) => {
   if (isServer) {
     // We are on the server
     const axiosInstance = axios.create({
-      baseURL: 'https://www.ticketing.sepingel.com',
+      baseURL:
+        'https://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
       headers: req.headers,
     });
 
