@@ -1,24 +1,16 @@
 import axios from 'axios';
-import https from 'https';
 
 export default ({ req }) => {
-  // Determine if the code is running on the server
-  const isServer = typeof window === 'undefined';
-
-  if (isServer) {
+  if (typeof window === 'undefined') {
     // We are on the server
-    const axiosInstance = axios.create({
-      baseURL:
-        'https://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+
+    // Disable SSL certificate verification (not recommended for production)
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+    return axios.create({
+      baseURL: 'https://www.ticketing.sepingel.com',
       headers: req.headers,
     });
-
-    // Configure axios instance to reject invalid SSL certificates
-    axiosInstance.defaults.httpsAgent = new https.Agent({
-      rejectUnauthorized: true, // Enable SSL certificate verification
-    });
-
-    return axiosInstance;
   } else {
     // We must be on the browser
     return axios.create({
