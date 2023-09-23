@@ -3,15 +3,14 @@ kind: Ingress
 metadata:
   name: ingress-service
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
-    cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+    # cert-manager.io/issuer: 'letsencrypt-prod'
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        - www.ticketing.sepingel.com
-      secretName: quickstart-example-tls
+  # tls:
+  #   - hosts:
+  #       - www.ticketing.sepingel.com
+  #     secretName: digitalocean-dns
   rules:
     - host: www.ticketing.sepingel.com
       http:
@@ -58,6 +57,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
     service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ticketing.sepingel.com'
+    service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: 'true'
   labels:
     helm.sh/chart: ingress-nginx-2.0.3
     app.kubernetes.io/name: ingress-nginx
