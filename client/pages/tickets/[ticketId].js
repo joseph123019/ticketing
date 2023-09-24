@@ -13,13 +13,20 @@ const TicketShow = ({ ticket }) => {
   });
 
   return (
-    <div>
-      <h1>{ticket.title}</h1>
-      <h4>Price: {ticket.price}</h4>
-      {errors}
-      <button onClick={() => doRequest()} className="btn btn-primary">
-        Purchase
-      </button>
+    <div className="flex justify-center items-start h-screen">
+      <div className="bg-white shadow-md p-6 rounded-lg">
+        <h1 className="text-2xl font-semibold mb-4">{ticket.title}</h1>
+        <h4 className="text-lg font-medium">
+          Price: ${ticket.price.toFixed(2)}
+        </h4>
+        {errors && <div className="text-red-500 mt-4">{errors}</div>}
+        <button
+          onClick={() => doRequest()}
+          className="mt-4 bg-indigo-600 text-white font-semibold py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Purchase
+        </button>
+      </div>
     </div>
   );
 };

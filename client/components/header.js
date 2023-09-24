@@ -1,33 +1,41 @@
 import Link from 'next/link';
 
-export default ({ currentUser }) => {
+const Header = ({ currentUser }) => {
   const links = [
     !currentUser && { label: 'Sign Up', href: '/auth/signup' },
     !currentUser && { label: 'Sign In', href: '/auth/signin' },
     currentUser && { label: 'Sell Tickets', href: '/tickets/new' },
     currentUser && { label: 'My Orders', href: '/orders' },
     currentUser && { label: 'Sign Out', href: '/auth/signout' },
-  ]
-    .filter((linkConfig) => linkConfig)
-    .map(({ label, href }) => {
-      return (
-        <li key={href} className="nav-item">
-          <Link className="nav-link" href={href}>
-            {label}
-          </Link>
-        </li>
-      );
-    });
+  ].filter((linkConfig) => linkConfig);
 
   return (
-    <nav className="navbar navbar-light bg-light">
-      <Link className="navbar-brand" href="/">
-        Ticketing
-      </Link>
+    <header className="bg-gray-900 text-white">
+      <div className="container mx-auto py-4">
+        <div className="flex items-center justify-between">
+          <Link href="/">
+            <span className="text-2xl font-semibold cursor-pointer">
+              Ticketing
+            </span>
+          </Link>
 
-      <div className="d-flex justify-content-end">
-        <ul className="nav d-flex align-items-center">{links}</ul>
+          <nav>
+            <ul className="flex space-x-4">
+              {links.map(({ label, href }) => (
+                <li key={href}>
+                  <Link href={href}>
+                    <span className="hover:text-blue-500 cursor-pointer">
+                      {label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 };
+
+export default Header;
