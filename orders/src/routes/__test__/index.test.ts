@@ -4,11 +4,13 @@ import { app } from '@src/app';
 import { Ticket } from '@src/models/ticket';
 
 const createTicket = async (title: string, price: number) => {
+  const userId = new mongoose.Types.ObjectId().toHexString();
   const ticketId = new mongoose.Types.ObjectId().toHexString();
   const ticket = Ticket.build({
     id: ticketId,
     title,
     price,
+    userId,
   });
   await ticket.save();
 
