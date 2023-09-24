@@ -8,7 +8,7 @@ export default ({ req }) => {
     // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
     return axios.create({
-      baseURL: 'http://www.ticketing.sepingel.com',
+      baseURL: 'https://www.ticketing.sepingel.com',
       headers: req.headers,
     });
   } else {
