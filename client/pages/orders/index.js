@@ -1,20 +1,21 @@
 const OrderIndex = ({ orders }) => {
   return (
-    <ul>
-      {orders.map((order) => {
-        return (
-          <li key={order.id}>
-            {order.ticket.title} - {order.status}
+    <div className="bg-white shadow-md p-6 rounded-lg">
+      <h1 className="text-2xl font-semibold mb-4">Orders</h1>
+      <ul>
+        {orders.map((order) => (
+          <li key={order.id} className="mb-2">
+            <span className="text-lg font-medium">{order.ticket.title}</span> -{' '}
+            {order.status}
           </li>
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 OrderIndex.getInitialProps = async (context, client) => {
   const { data } = await client.get('/api/orders');
-
   return { orders: data };
 };
 

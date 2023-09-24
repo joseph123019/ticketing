@@ -4,6 +4,7 @@ import {
   NotFoundError,
   OrderStatus,
   RequestError,
+  currentUser,
   requireAuth,
   validateRequest,
 } from '@jemtickets/common';
@@ -42,6 +43,12 @@ router.post(
     const isReserved = await ticket.isReserved();
     if (isReserved) {
       throw new RequestError('Ticket is already reserved to someone');
+    }
+
+    if (ticket.userId === req.currentUser!.id) {
+      throw new RequestError(
+        'Sorry, you cannot purchase this ticket as you are the owner.'
+      );
     }
 
     // calculate the expiration for the order
