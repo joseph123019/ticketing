@@ -5,15 +5,17 @@ import { Ticket } from '@src/models/ticket';
 
 it('fetch order', async () => {
   // create ticket
+  const userId = new mongoose.Types.ObjectId().toHexString();
   const ticketId = new mongoose.Types.ObjectId().toHexString();
   const ticket = Ticket.build({
     id: ticketId,
     title: 'concert',
     price: 20,
+    userId,
   });
   await ticket.save();
 
-  const user = global.signin();
+  const user = global.signin(userId);
 
   // make request to create order with the ticket
   const { body: order } = await request(app)
@@ -34,15 +36,17 @@ it('fetch order', async () => {
 
 it('return error if user fetch other user order', async () => {
   // create ticket
+  const userId = new mongoose.Types.ObjectId().toHexString();
   const ticketId = new mongoose.Types.ObjectId().toHexString();
   const ticket = Ticket.build({
     id: ticketId,
     title: 'concert',
     price: 20,
+    userId,
   });
   await ticket.save();
 
-  const user = global.signin();
+  const user = global.signin(userId);
   const wrongUser = global.signin();
 
   // make request to create order with the ticket
