@@ -5,13 +5,12 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/use-regex: 'true'
     # cert-manager.io/issuer: 'letsencrypt-prod'
-    kubernetes.io/ingress.class: nginx
 spec:
   # ingressClassName: nginx
   # tls:
   #   - hosts:
   #       - www.ticketing.sepingel.com
-  #     secretName: my-tls-secret
+  #     secretName: ca-secret
   rules:
     - host: www.ticketing.sepingel.com
       http:
