@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 
 declare global {
-  var signin: (userId?: string) => string[];
+  var signin: () => string[];
 }
 
 jest.mock('@src/nats-wrapper');
@@ -33,12 +33,12 @@ afterAll(async () => {
   }
 });
 
-global.signin = (userId?: string) => {
+global.signin = () => {
   // generate id
   const id = new mongoose.Types.ObjectId();
   // build JWT payload
   const payload = {
-    id: userId || id,
+    id,
     email: 'test@test.com',
   };
 

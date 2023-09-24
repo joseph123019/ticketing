@@ -6,13 +6,11 @@ interface TicketAttrs {
   id: string;
   title: string;
   price: number;
-  userId: string;
 }
 
 export interface TicketDoc extends mongoose.Document {
   title: string;
   price: number;
-  userId: string;
   version: number;
   isReserved(): Promise<boolean>;
 }
@@ -31,10 +29,6 @@ const ticketSchema = new mongoose.Schema(
       type: Number,
       required: true,
       min: 0,
-    },
-    userId: {
-      type: String,
-      required: true,
     },
   },
   {
@@ -55,7 +49,6 @@ ticketSchema.statics.build = (attrs: TicketAttrs) => {
     _id: attrs.id,
     title: attrs.title,
     price: attrs.price,
-    userId: attrs.userId,
   });
 };
 ticketSchema.methods.isReserved = async function () {
