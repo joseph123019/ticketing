@@ -5,10 +5,10 @@ export default ({ req }) => {
     // We are on the server
 
     // Disable SSL certificate verification (not recommended for production)
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
     return axios.create({
-      baseURL: 'https://www.ticketing.sepingel.com',
+      baseURL: 'http://www.ticketing.sepingel.com',
       headers: req.headers,
     });
   } else {
