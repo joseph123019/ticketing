@@ -13,7 +13,6 @@ const setup = async () => {
     id: new mongoose.Types.ObjectId().toHexString(),
     title: 'concert',
     price: 1000,
-    userId: new mongoose.Types.ObjectId().toHexString(),
   });
   await ticket.save();
 
