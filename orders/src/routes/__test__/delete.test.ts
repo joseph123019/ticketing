@@ -7,15 +7,18 @@ import { natsWrapper } from '@src/nats-wrapper';
 
 it('cancel order', async () => {
   // create ticket
+  const userId = new mongoose.Types.ObjectId().toHexString();
+  const userId2 = new mongoose.Types.ObjectId().toHexString();
   const ticketId = new mongoose.Types.ObjectId().toHexString();
   const ticket = Ticket.build({
     id: ticketId,
     title: 'concert',
     price: 100,
+    userId,
   });
   await ticket.save();
 
-  const user = global.signin();
+  const user = global.signin(userId2);
 
   // make requet to create an Order
   const { body: order } = await request(app)
@@ -38,15 +41,18 @@ it('cancel order', async () => {
 
 it('emis order cancelled event', async () => {
   // create ticket
+  const userId = new mongoose.Types.ObjectId().toHexString();
+  const userId2 = new mongoose.Types.ObjectId().toHexString();
   const ticketId = new mongoose.Types.ObjectId().toHexString();
   const ticket = Ticket.build({
     id: ticketId,
     title: 'concert',
     price: 100,
+    userId,
   });
   await ticket.save();
 
-  const user = global.signin();
+  const user = global.signin(userId2);
 
   // make requet to create an Order
   const { body: order } = await request(app)
