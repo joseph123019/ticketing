@@ -2,27 +2,33 @@
 
 Install docker and make sure run ``bash kubectl --version`` to make sure the  docker is working
 
-run ``bash
+run 
+```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
-``
+```
 to istall ingress nginx 
 *******
 Install all dependencies
-``bash
+```bash
 cd auth && npm install
-``
-``bash
+```
+
+```bash
 cd client && npm install
-``
-``bash
+```
+
+```bash
 cd expiration && npm install
-``
-``bash
+```
+
+```bash
 cd orders && npm install
-``
-``bash
+```
+
+```bash
 cd payments && npm install
-``
-``bash
+```
+
+```bash
 cd tickets && npm install
-``
+```
