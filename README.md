@@ -7,6 +7,7 @@ kubectl --version
 ```
 
 to make sure the  docker is working
+https://docs.docker.com/engine/install/
 
 run 
 
@@ -40,4 +41,10 @@ cd payments && npm install
 
 ```bash
 cd tickets && npm install
+```
+install skaffold
+https://skaffold.dev/docs/install
+
+```bash
+cd .. && skaffold dev
 ```
