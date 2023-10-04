@@ -2,7 +2,9 @@
 
 Install docker and make sure run 
 
-```bash kubectl --version```
+```bash 
+kubectl --version
+```
 
 to make sure the  docker is working
 
